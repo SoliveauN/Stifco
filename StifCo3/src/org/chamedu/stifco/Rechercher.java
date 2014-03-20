@@ -55,8 +55,6 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 	private int mYear;
 	private int mMonth;
 	private int mDay;
-	private int mHour;
-	private int mMinute;
 
 	static final int TIME_24_DIALOG_ID = 1;
 	static final int DATE_DIALOG_ID = 2;
@@ -84,14 +82,11 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 		mDateDisplay = (TextView) findViewById(R.id.tvLaDate);
 
 		setDialogOnClickListener(R.id.btChangeDate, DATE_DIALOG_ID);
-		setDialogOnClickListener(R.id.btChangeHeure, TIME_24_DIALOG_ID);
 
 		final Calendar c = Calendar.getInstance();
 		mYear = c.get(Calendar.YEAR);
 		mMonth = c.get(Calendar.MONTH);
 		mDay = c.get(Calendar.DAY_OF_MONTH);
-		mHour = c.get(Calendar.HOUR_OF_DAY);
-		mMinute = c.get(Calendar.MINUTE);
 
 		updateDisplay();
 
@@ -162,9 +157,6 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
-		case TIME_24_DIALOG_ID:
-			return new TimePickerDialog(this,
-					mTimeSetListener, mHour, mMinute, id == TIME_24_DIALOG_ID);
 		case DATE_DIALOG_ID:
 			return new DatePickerDialog(this,
 					mDateSetListener,
@@ -176,9 +168,6 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog) {
 		switch (id) {
-		case TIME_24_DIALOG_ID:
-			((TimePickerDialog) dialog).updateTime(mHour, mMinute);
-			break;
 		case DATE_DIALOG_ID:
 			((DatePickerDialog) dialog).updateDate(mYear, mMonth, mDay);
 			break;
@@ -191,9 +180,7 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 				// Month is 0 based so add 1
 				.append(mMonth + 1).append("-")
 				.append(mDay).append("-")
-				.append(mYear).append(" ")
-				.append(pad(mHour)).append(":")
-				.append(pad(mMinute)));
+				.append(mYear).append(" "));
 	}
 
 	private DatePickerDialog.OnDateSetListener mDateSetListener =
@@ -204,16 +191,6 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 			mYear = year;
 			mMonth = monthOfYear;
 			mDay = dayOfMonth;
-			updateDisplay();
-		}
-	};
-
-	private TimePickerDialog.OnTimeSetListener mTimeSetListener =
-			new TimePickerDialog.OnTimeSetListener() {
-
-		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-			mHour = hourOfDay;
-			mMinute = minute;
 			updateDisplay();
 		}
 	};
@@ -258,8 +235,8 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 				RestClient.doPost("/recherche.php", nameValuePairs, new OnResultListener() {					
 					@Override
 					public void onResult(String json) {
-						if ( json.equals("demande_ok")) {
-							Toast.makeText(Rechercher.this, "Liste affichée!", Toast.LENGTH_LONG).show();
+						if ( json.equals("soucis")) {
+							Toast.makeText(Rechercher.this, "Soucis!", Toast.LENGTH_LONG).show();
 							finish();
 						} else {
 							Toast.makeText(Rechercher.this, json, Toast.LENGTH_LONG).show();

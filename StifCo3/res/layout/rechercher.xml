@@ -16,16 +16,6 @@
         android:text="@string/ladate"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/btChangeDate"
-        style="@style/btn_proposer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDate"
-        android:layout_below="@+id/tvDate"
-        android:layout_marginTop="16dp"
-        android:text="@string/changerdate" />
-
     <EditText
         android:id="@+id/etVille"
         android:layout_width="wrap_content"
@@ -51,7 +41,7 @@
         android:id="@+id/tvVille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btChangeDate"
+        android:layout_marginLeft="15dp"
         android:layout_below="@+id/btChangeDate"
         android:layout_marginTop="14dp"
         android:text="@string/ville"
@@ -61,7 +51,7 @@
         android:id="@+id/tsPlaces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/btChangeDate"
+        android:layout_alignLeft="@+id/btChangeDate"
         android:layout_alignTop="@+id/tvPassagers"
         android:layout_centerVertical="true" >
     </TextSwitcher>
@@ -70,30 +60,11 @@
         android:id="@+id/tvGares"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvPassagers"
+        android:layout_marginLeft="15dp"
         android:layout_below="@+id/btMoins"
         android:layout_marginTop="14dp"
         android:text="@string/gare"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/btRecherche"
-        style="@style/btn_soumettre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/btMoins"
-        android:layout_marginBottom="18dp"
-        android:text="@string/rechercher" />
-
-    <Button
-        android:id="@+id/btPlus"
-        style="@style/btn_proposer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btChangeHeure"
-        android:layout_alignTop="@+id/tvPassagers"
-        android:text="@string/plus" />
 
     <Button
         android:id="@+id/btMoins"
@@ -122,23 +93,44 @@
         </AutoCompleteTextView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btChangeHeure"
-        style="@style/btn_proposer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvVille"
-        android:layout_alignRight="@+id/etVille"
-        android:text="@string/changerheure" />
-
     <TextView
         android:id="@+id/tvPassagers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvVille"
+        android:layout_marginLeft="15dp"
         android:layout_below="@+id/etVille"
         android:layout_marginTop="23dp"
         android:text="@string/places"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/btPlus"
+        style="@style/btn_proposer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btRecherche"
+        android:layout_alignTop="@+id/tsPlaces"
+        android:layout_marginRight="28dp"
+        android:text="@string/plus" />
+
+    <Button
+        android:id="@+id/btRecherche"
+        style="@style/btn_soumettre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:text="@string/rechercher" />
+
+    <Button
+        android:id="@+id/btChangeDate"
+        style="@style/btn_proposer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLaDate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/changerdate" />
 
 </RelativeLayout>

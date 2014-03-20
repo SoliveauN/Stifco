@@ -26,7 +26,7 @@ import android.util.Log;
 
 public class RestClient{
 	public static final int HTTP_OK = 200;
-	public static final String SERVER_URL = "http://10.0.2.2/Stifco_html/Stifco/core/library";
+	public static final String SERVER_URL = "http://www.chamedu.fr/~nsoliveau/Stifco/core/library";
 
 	public static void doGet(final String url, final OnResultListener onResultListener) {
 		new AsyncTask<String, Void, String>() {
