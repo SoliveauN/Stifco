@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -173,9 +174,9 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 	private void updateDisplay() {
 		mDateDisplay.setText(
 				new StringBuilder()
+				.append(mDay).append("-")
 				// Month is 0 based so add 1
 				.append(mMonth + 1).append("-")
-				.append(mDay).append("-")
 				.append(mYear).append(" "));
 	}
 
@@ -223,12 +224,7 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 				RestClient.doPost("/recherche.php", nameValuePairs, new OnResultListener() {					
 					@Override
 					public void onResult(String json) {
-						if ( json.equals("soucis")) {
-							Toast.makeText(Rechercher.this, "Soucis!", Toast.LENGTH_LONG).show();
-							finish();
-						} else {
-							Toast.makeText(Rechercher.this, json, Toast.LENGTH_LONG).show();
-						}					
+						doOnResult(json);
 					}
 				});
 			} catch (URISyntaxException e) {
@@ -241,6 +237,17 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 		}
 	}
 
+	public void doOnResult(String json){
+		if ( json.equals("Aucune propostion pour le mois")||json.equals("Aucune propostion pour cette date")) {
+			Toast.makeText(Rechercher.this, "Petit Pwoblème.", Toast.LENGTH_LONG).show();
+			finish();
+		} else {
+			Intent iAfficher = new Intent(this, Afficher.class);
+			String keyIdentifier = null;
+			iAfficher.putExtra("json",json);
+			this.startActivityForResult(iAfficher, 10);
+		}					
+	}
 	private void updateCounter() {
 		mSwitcher.setText(String.valueOf(mCounter));
 	}

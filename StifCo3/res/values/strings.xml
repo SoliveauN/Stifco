@@ -7,8 +7,8 @@
     <string name="offre">Envoyer l\'offre</string>
     <string name="rechercher">Rechercher un déplacement</string>
     <string name="logo">Région Île de France</string>
-    <string name="imei"></string>
     <string name="suppression_compte">Déconnexion</string>
+    <string name="afficher">Affichage des déplacements</string>
     
     <string name="ad_compte">Validation du téléphone</string>
     <string name="explications">Pour avoir un compte et lancer l\'application, il faut aller au préalable s\'inscrire sur le site stifco.chamedu.fr </string>

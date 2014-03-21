@@ -35,6 +35,11 @@
             android:screenOrientation="portrait"
             android:label="@string/rechercher" >
         </activity>
+        <activity
+            android:name="org.chamedu.stifco.Afficher"
+            android:screenOrientation="portrait"
+            android:label="@string/afficher" >
+        </activity>
     </application>
 
 </manifest>

@@ -190,9 +190,9 @@ public class Proposer extends Activity implements ViewSwitcher.ViewFactory,View.
 	private void updateDisplay() {
 		mDateDisplay.setText(
 				new StringBuilder()
+				.append(mDay).append("-")
 				// Month is 0 based so add 1
 				.append(mMonth + 1).append("-")
-				.append(mDay).append("-")
 				.append(mYear).append(" ")
 				.append(pad(mHour)).append(":")
 				.append(pad(mMinute)));
