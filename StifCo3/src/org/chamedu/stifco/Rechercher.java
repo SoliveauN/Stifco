@@ -243,7 +243,6 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 			finish();
 		} else {
 			Intent iAfficher = new Intent(this, Afficher.class);
-			String keyIdentifier = null;
 			iAfficher.putExtra("json",json);
 			this.startActivityForResult(iAfficher, 10);
 		}					
