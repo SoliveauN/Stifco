@@ -239,7 +239,7 @@ public class Rechercher extends Activity implements ViewSwitcher.ViewFactory,Vie
 
 	public void doOnResult(String json){
 		if ( json.equals("Aucune propostion pour le mois")||json.equals("Aucune propostion pour cette date")) {
-			Toast.makeText(Rechercher.this, "Petit Pwoblème.", Toast.LENGTH_LONG).show();
+			Toast.makeText(Rechercher.this, "Aucune proposition actuellement.", Toast.LENGTH_LONG).show();
 			finish();
 		} else {
 			Intent iAfficher = new Intent(this, Afficher.class);
