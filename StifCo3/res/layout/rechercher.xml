@@ -66,16 +66,6 @@
         android:text="@string/gare"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/btMoins"
-        style="@style/btn_proposer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btPlus"
-        android:layout_alignBottom="@+id/btPlus"
-        android:layout_toRightOf="@+id/btPlus"
-        android:text="@string/moins" />
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -132,5 +122,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text="@string/changerdate" />
+
+    <Button
+        android:id="@+id/btMoins"
+        style="@style/btn_proposer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btPlus"
+        android:layout_alignBottom="@+id/btPlus"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="@string/moins" />
 
 </RelativeLayout>
