@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,12 +27,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 	Button proposer, rechercher;
 	TextView numEMAIL;
+	ImageView logo;
+	String url = "http://www.stif.info";
 
 	AccountRepository accRepo;
 
@@ -99,10 +103,12 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		proposer = (Button)findViewById(R.id.proposer);
 		rechercher = (Button)findViewById(R.id.rechercher);
+		logo = (ImageView)findViewById(R.id.logoidf);
 		numEMAIL = (TextView)findViewById(R.id.tvEmail);
 
 		proposer.setOnClickListener(this);
 		rechercher.setOnClickListener(this);
+		logo.setOnClickListener(this);
 
 		accRepo = new AccountRepository(getApplicationContext());
 
@@ -159,7 +165,13 @@ public class MainActivity extends Activity implements OnClickListener {
 		if ( v == rechercher ) { 
 			Intent iRechercher = new Intent(this,Rechercher.class);
 			this.startActivityForResult(iRechercher, 10);
-		}	
+		}
+		if (v == logo){
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			Uri u = Uri.parse(url);
+			i.setData(u);
+			startActivity(i);
+		}
 	}
 
 	@Override
