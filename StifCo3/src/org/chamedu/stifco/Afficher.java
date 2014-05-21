@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.chamedu.stifco.R.color;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -65,7 +68,18 @@ public class Afficher extends Activity implements View.OnClickListener{
 				SimpleAdapter adapter = new SimpleAdapter(this, propositions, android.R.layout.simple_list_item_2,
 												new String[] {"Date", "Trajet"},
                         						new int[] {	android.R.id.text1,
-                        									android.R.id.text2});
+                        									android.R.id.text2}){
+				@Override
+				public View getView(int position, View convertView, ViewGroup parent)
+				{
+					View view = super.getView(position, convertView, parent);
+					if(position%2 == 0)
+					{
+						view.setBackgroundColor(Color.RED);
+					}
+					return view;
+					
+				}};
 				lvTrajets.setAdapter(adapter);
 
 			} catch (JSONException e) {
